@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 定义横坐标和纵坐标数据
+x = [0, 7, 14, 21, 28]
+y = [0.5994, 7.6493, 8.0392, 3.6452, 0.2329]
+# 进行最小二乘拟合，得到拟合函数的系数
+z = np.polyfit(x, y, 2)
+p = np.poly1d(z)
+
+yhanshunihe = np.poly1d(z)
+print("y拟合曲线函数表达式：", yhanshunihe)
+
+# 绘制原始数据和拟合曲线
+plt.plot(x, y, 'bo', label='Original Data')
+plt.plot(x, p(x), 'r-', label='Fitted Curve')
+
+# 添加图例、横纵坐标标签和图形标题
+plt.legend(loc='best')
+plt.xlabel('Failure Rate')
+plt.ylabel('Analysis Result')
+plt.title('Least Squares Fitting')
+
+# 显示图形
+plt.show()
